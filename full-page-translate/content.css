@@ -1,0 +1,16 @@
+/* 译文沿用原文的字体/颜色/字号，仅做块级换行 */
+.dt-trans {
+  display: block;
+  margin-top: 0.25em;
+  font: inherit;
+  color: var(--dt-color, inherit);
+}
+.dt-trans.dt-loading { opacity: 0.45; }
+.dt-trans.dt-error { color: #e53e3e; cursor: pointer; }
+#dt-toast, #dt-stats {
+  position: fixed; z-index: 2147483647;
+  background: rgba(30, 30, 30, 0.92); color: #fff; padding: 6px 10px; border-radius: 6px;
+  font: 12px/1.4 sans-serif;
+}
+#dt-toast { right: 16px; bottom: 16px; max-width: 360px; display: none; padding: 8px 12px; font-size: 13px; }
+#dt-stats { left: 16px; bottom: 16px; pointer-events: none; }

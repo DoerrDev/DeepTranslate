@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh"><meta charset="utf-8"><title>DeepTranslate 设置</title>
+<link rel="stylesheet" href="ui.css">
+<style>
+  main { max-width: 640px; margin: 0 auto; padding: 48px 16px 64px; }
+  .lead { margin-top: 8px; color: var(--muted); }
+  .sticky { position: sticky; bottom: 0; margin: 24px -16px 0; padding: 12px 16px; background: rgba(250, 250, 250, 0.92); backdrop-filter: blur(6px); border-top: 1px solid var(--hairline); }
+  .sticky .actions { margin: 0; }
+</style>
+<body>
+<main>
+  <div class="eyebrow">▲ DeepTranslate</div>
+  <h1>设置</h1>
+  <p class="lead">配置只保存在本机浏览器。接口需兼容 OpenAI <code>chat/completions</code>。</p>
+
+  <section class="card">
+    <h2>AI 接口</h2>
+    <label>导入 secret.properties</label>
+    <input type="file" id="file" accept=".properties,.txt">
+    <label>Base URL</label><input id="baseUrl" placeholder="https://api.example.com/v1">
+    <label>API Key</label><input id="apiKey" type="password" placeholder="sk-…">
+    <label>Model</label><input id="model">
+  </section>
+
+  <section class="card">
+    <h2>语言</h2>
+    <div class="row">
+      <div><label>目标语言</label><select id="targetLang"></select></div>
+      <div><label>我的语言 <small>该语言的文本不翻译</small></label><select id="userLang"></select></div>
+    </div>
+      </section>
+
+  <section class="card">
+    <h2>性能</h2>
+    <div class="row">
+      <div><label>并发请求</label><input id="concurrency" type="number" min="1" max="10"></div>
+      <div><label>每批段数</label><input id="maxItems" type="number" min="1" max="60"></div>
+      <div><label>每批字符</label><input id="maxChars" type="number" min="500" max="12000"></div>
+    </div>
+    <label class="check"><input type="checkbox" id="showStats"> 页面左下角显示翻译速度统计</label>
+  </section>
+
+  <section class="card">
+    <h2>模型与显示</h2>
+    <div class="row">
+      <div><label>Temperature</label><input id="temperature" type="number" step="0.1" min="0" max="2"></div>
+      <div><label>译文颜色 <small>留空沿用原文</small></label><input id="textColor" placeholder="#297a3a"></div>
+    </div>
+    <label>额外提示词 <small>如术语表：LLM = 大语言模型</small></label>
+    <textarea id="extraPrompt" rows="3"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>自动翻译</h2>
+    <label>网站域名 <small>每行一个，如 docs.python.org</small></label>
+    <textarea id="autoSites" rows="3"></textarea>
+  </section>
+
+  <div class="sticky">
+    <div class="actions">
+      <button class="primary" id="save">保存</button>
+      <button id="test">测试连接</button>
+      <button id="clear">清空译文缓存</button>
+      <span id="msg" class="msg"></span>
+    </div>
+  </div>
+</main>
+<script src="defaults.js"></script>
+<script src="options.js"></script>
+</body></html>
